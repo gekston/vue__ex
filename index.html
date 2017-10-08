@@ -10,12 +10,18 @@
     {{ message }}
     <button @click="reseverMessage">reverse</button>
     <ol>
-      <li v-for="todo in todos">
-        {{ todo.text }}
-      </li>
+      <todo-item
+        v-for="item in groceryList"
+        v-bind:todo="item"
+        v-bind:key="item.id"
+      ></todo-item>
     </ol>
   </div>
   <script>
+    Vue.component('todo-item', {
+      props: ['todo'],
+      template: '<li>{{ todo.text }}</li>'
+    })
     var app = new Vue({
       el: '.app',
       data: {
@@ -24,6 +30,11 @@
           { text: 'Посадить дерево' },
           { text: 'Построить дом' },
           { text: 'Вырастить сына' }
+        ],
+        groceryList: [
+          { id: 0, text: 'Овощи' },
+          { id: 1, text: 'Сыр' },
+          { id: 2, text: 'Что там ещё люди едят?' }
         ]
       },
       methods: {

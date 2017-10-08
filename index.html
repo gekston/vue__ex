@@ -7,13 +7,22 @@
 </head>
 <body>
   <div class="app">
-    {{ message }}
+    <ol>
+      <li v-for="todo in todos">
+        {{ todo.text }}
+      </li>
+    </ol>
   </div>
   <script>
     var app = new Vue({
       el: '.app',
       data: {
-        message: 'Hello Vue!'
+        message: 'Hello Vue!',
+        todos: [
+          { text: 'Посадить дерево' },
+          { text: 'Построить дом' },
+          { text: 'Вырастить сына' }
+        ]
       }
     })
   </script>

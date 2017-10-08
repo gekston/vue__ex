@@ -7,6 +7,8 @@
 </head>
 <body>
   <div class="app">
+    {{ message }}
+    <button @click="reseverMessage">reverse</button>
     <ol>
       <li v-for="todo in todos">
         {{ todo.text }}
@@ -23,6 +25,11 @@
           { text: 'Построить дом' },
           { text: 'Вырастить сына' }
         ]
+      },
+      methods: {
+        reseverMessage: function() {
+          this.message = this.message.split('').reverse().join('');
+        }
       }
     })
   </script>
